@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Car>
+
+@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div id="wrapper">
+    <div id="header">
+        <img alt="Изображение" src="images/Header.png"/>
+    </div>
+    <div id="content">
+        <div id="nav" >
+            <ul>
+                <li><a href="index.html"><img alt="Изображение" src="images/Logo.jpg"/></a></li>
+                @foreach (var car in Model)
+                {
+                    <li><a asp-controller="Cars" asp-action="">@car.Title</a></li>
+                }
+            </ul>
+            <div id="map"><img src="images/Map.jpg" alt="Map"/></div>
+        </div>
+        <div id="main">
+        <table>
+            <tr >
+                <td id="main_title" colspan="3"><h1>Главная</h1></td>
+            </tr>
+                <tr>
+                @foreach (var car in Model)
+                {
+                    <td class="small_card">
+                    <img alt="Изображение" alt-src="images/default-image.png" src="@car.Preview"/>
+                        <div class="content">
+                            <small>@car.Type</small>
+                            <h2>@car.Title</h2>
+                            <p>@car.Description</p>
+                            <a href="/placeholder">Перейти</a>
+                        </div>
+                    </td>  
+                }
+            </tr>
+              
+@*              <tr>
+                  <td class="big_card"  colspan="3">
+                  <img alt="Изображение" src="images/Form.png"/>
+                        <form onsubmit="return false" action="Home/Lid" method="POST">
+                            <fieldset>
+                                <legend>Оформление заказа</legend>
+                                <input type="text" name="Name" placeholder="Введите ваше имя" required/><br/>
+                                 <!--Тут ошибка-->
+                                <input type="tel" name="Tel" placeholder="Введите номер телефона в формате 8-ххх-ххх-хххх" required patern="8-[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br/>
+                                <!--Тут ошибка-->
+                                <select name="Car" required>
+                                    <option value="Ghibili" >Ghibili</option>
+                                    <option value="Quattroporte">Quattroporte</option>
+                                    <option value="GranTurismo">GranTurismo</option>
+                                </select><br/>
+                                <input type="submit"/>
+                            </fieldset>
+                      </form>
+                  </td>
+              </tr>*@
+              
+        </table>
+        </div>
+    </div>
+    <div id="footer">Copyrite</div>
+</div>
